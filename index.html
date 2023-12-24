@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello World & Random Quote</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #111111; /* Black background */
+      color: #ffffff; /* White text */
+      font-family: Arial, sans-serif;
+      text-align: center;
+      position: relative;
+    }
+    #quote {
+      margin-top: 20px;
+    }
+    #copyright {
+      position: absolute;
+      bottom: 10px;
+      left: 10px; /* Adjusted to bottom left */
+    }
+  </style>
+</head>
+<body>
+  <h1>Hello World</h1>
+  <p id="quote"></p>
+  <p id="copyright">©NightMare™</p>
+
+  <script>
+    // Fetch a random quote from an API
+    fetch('https://api.quotable.io/random')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('quote').innerText = data.content + ' - ' + data.author;
+      })
+      .catch(error => {
+        console.log('Error fetching quote', error);
+      });
+  </script>
+</body>
+</html>
